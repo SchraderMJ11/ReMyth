@@ -1,0 +1,38 @@
+<div class="row" ng:show="previousRecording != undefined">
+  <div class="six columns" >
+    <div class="row previousRecording">
+      <div class="four columns">
+        <img ng:src="/rest/dvr/image?ChanId={{ previousRecording.Channel.ChanId }}&StartTime={{ previousRecording.StartTime }}">
+      </div>
+      <div class="eight columns">
+        <h4>Previously played...</h4>
+        <a href="" ng:click="clickDeleteRecording()">Delete</a>
+        <a href="" ng:click="ignorePreviousRecording()">Ignore</a>
+        
+        <div ng:show="previousRecordingConfirmNeeded">
+          Are you sure you want delete?<br />
+          <a href="" ng:click="deleteRecording(previousRecording)">Yes</a>
+          <a href="" ng:click="cancelDeleteRecording()">No</a>
+        </div>
+        <h4>{{ previousRecording.Title }}</h4>
+        <h4><small>{{ previousRecording.StartTime | date:'MMM d, y h:mm a' }}</small></h4>
+        <p>{{ previousRecording.Description }}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row" ng:show="recordings != undefined">
+  <div class="twelve columns">
+    <div class="row recording" ng:repeat="recording in recordings | filter: filterLiveTV | orderBy:'StartTime':reverse" ng:click="clickRecording(recording)">
+      <div class="four columns">
+        <img ng:src="/rest/dvr/image?ChanId={{ recording.Channel.ChanId }}&StartTime={{ recording.StartTime }}">
+      </div>
+      <div class="eight columns">
+        <h4>{{ recording.Title }}</h4>
+        <h4><small>{{ recording.StartTime | date:'MMM d, y h:mm a' }}</small></h4>
+        <p>{{ recording.Description }}</p>
+      </div>
+    </div>
+  </div>
+</div>

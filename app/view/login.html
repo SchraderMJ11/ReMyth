@@ -1,0 +1,27 @@
+<div class="row display">
+  <div class="six columns offset-by-three">
+    <h1>Hello!  <small>What is your name?</small></h1>
+  </div>
+</div>
+
+<form class="css-form" name="loginForm" novalidate>
+  <div class="row display">
+    <div class="six columns offset-by-three">
+      <input type="text" name="username" ng-model="username" required />
+    </div>
+  </div>
+
+  <div class="row display">
+    <div class="six columns offset-by-three">
+      <select class="green-select" ng-model="frontend" required>
+        <option ng:repeat="frontend in frontends" value="{{frontend.name}}" ng:selected="getFrontendComboSelected(frontend.name)">{{frontend.name}}</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="row display">
+    <div class="two columns offset-by-three">
+      <button ng:disabled="loginForm.$invalid" class="green-button"  ng:click="clickLogin(username)">Login</button>
+    </div>
+  </div>
+</form>

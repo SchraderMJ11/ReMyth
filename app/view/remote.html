@@ -1,0 +1,40 @@
+<div class="twelve columns" ng:show="frontendState != undefined">
+  <div class="row display">
+    <h1>{{ frontendState.title}}</h4>
+  </div>
+  <div class="row display">
+    <div style="background-color: #C0C0C0; height: 32px; width: 100%;">
+      <div style="background-color: red; height: 32px; width: {{ progress }}%;"> </div>
+    </div>
+  </div>
+
+  <div class="row display" style="margin-top: 30px;">
+    <div class="two mobile-four columns">
+      <div class="big button" ng:click="executeSkipCommercialBack()">Back</div>
+    </div>
+
+    <div class="two mobile-four columns">
+      <div class="big button" ng:click="decreaseSpeed()">Slow Down</div>
+    </div>
+
+    <div class="two mobile-four columns">
+      <div class="big button" ng:click="executeStop()">Stop</div>
+    </div>
+
+    <div class="two mobile-four columns" ng:show="playSpeed == '1'">
+      <div class="big button" ng:click="executePause()">Pause</div>
+    </div>
+
+    <div class="two mobile-four columns" ng:hide="playSpeed == '1'">
+      <div class="big button" ng:click="executePlay()">Play</div>
+    </div>
+
+    <div class="two mobile-four columns" ng:click="increaseSpeed()">
+      <div class="big button" ng:click="increaseSpeed()">Speed Up</div>
+    </div>
+
+    <div class="two mobile-four columns">
+      <div class="big button" ng:click="executeSkipCommercial()">Next</div>
+    </div>
+  </div>
+</div>
