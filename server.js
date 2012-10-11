@@ -14,7 +14,7 @@ var Creationix = require('creationix');
 //var Creationix = require("/Users/matt/play/creationix/index.js");
 
 var mdns = require('mdns');
-var root = process.cwd();
+var root = __dirname;
 
 // Stack up a server and start listening
 HTTP.createServer(Stack(
@@ -23,7 +23,7 @@ HTTP.createServer(Stack(
   ReMyth.ReMythDVR(),
   ReMyth.ReMythFrontends(),
   Creationix.static("/app", root + "/app"),
-  Creationix.static("/", "index.html")  
+  Creationix.static("/", root + "/index.html")  
 )).listen(port);
 
 var formatHost = function(host) {

@@ -8,7 +8,9 @@ var argv = require('optimist')
 
 console.log('-----PORT: ' + argv.port);
 
-var child = new (forever.Monitor)('server.js', {
+var dir = __dirname;
+
+var child = new (forever.Monitor)(dir + '/server.js', {
 	options: ['--port', argv.port]
 });
 
