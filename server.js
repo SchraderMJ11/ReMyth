@@ -1,3 +1,9 @@
+var argv = require('optimist')
+    .default('port', 8088)
+    .argv;
+
+var port = argv.port;
+
 var ReMyth = require('./ReMyth.js');
 
 // Load a built-in node library
@@ -8,10 +14,6 @@ var Creationix = require('creationix');
 //var Creationix = require("/Users/matt/play/creationix/index.js");
 
 var mdns = require('mdns');
-
-// Listen on the alt-http port
-var port = process.env.PORT || 8080;
-
 var root = process.cwd();
 
 // Stack up a server and start listening
