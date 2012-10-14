@@ -78,7 +78,7 @@ exports.getParameterString = function(parameters) {
     } else {
       param_str += '&';
     }
-    param_str += key + '=' + value;
+    param_str += key + '=' + encodeURIComponent(value);
   }
 
   return param_str;

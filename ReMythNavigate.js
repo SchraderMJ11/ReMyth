@@ -59,12 +59,6 @@ module.exports = function setup(mount, root) {
     }, undefined, service.query.frontend);
 
     res.writeHead(200);
-    res.end("executed action: " + action);
+    res.end("executed action: " + action + "\n" + "Submitted action to frontend: " + submitAction);
   };
-
-  function sendAction(action) {
-    action = encodeURIComponent(action);
-
-    
-  }
 };
