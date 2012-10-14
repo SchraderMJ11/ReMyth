@@ -36,6 +36,14 @@ function RemoteCtrl($scope, $timeout, $location, $rootScope, Frontend, User, Rec
     Frontend.decreaseSpeed();
   }
 
+  $scope.volumeUp = function() {
+    Frontend.volumeUp();
+  }
+
+  $scope.volumeDown = function() {
+    Frontend.volumeDown();
+  }
+
   $scope.monitorStatus = function() {
     var status = Frontend.getStatus(Frontend.getSelected(), function() {
       if(status.FrontendStatus.State.state !== 'WatchingPreRecorded') {

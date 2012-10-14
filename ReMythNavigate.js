@@ -8,7 +8,8 @@ var support = {
     'guide', 'livetv', 'mainmenu', 
     'commercialSkipBack', 'commercialSkip', 
     'pause', 'play', 'stop',
-    'increaseSpeed', 'decreaseSpeed']
+    'increaseSpeed', 'decreaseSpeed',
+    'volumeUp', 'volumeDown']
 };
 
 module.exports = function setup(mount, root) {
@@ -52,6 +53,10 @@ module.exports = function setup(mount, root) {
       submitAction = "SPEEDINC";
     } else if(action === 'decreaseSpeed') {
       submitAction = "SPEEDDEC";
+    } else if(action === 'volumeUp') {
+      submitAction = "VOLUMEUP";
+    } else if(action === 'volumeDown') {
+      submitAction = "VOLUMEDOWN";
     }
 
     restUtil.sendRequest(res, 'Frontend', 'SendAction', {

@@ -101,6 +101,14 @@ angular.module('FrontendModule', ['ngCookies', 'ngResource']).factory('Frontend'
       Frontend._executeAction('/rest/navigate/mainmenu');
     };
 
+    Frontend.volumeUp = function() {
+      Frontend._executeAction('/rest/navigate/volumeUp');
+    };
+
+    Frontend.volumeDown = function() {
+      Frontend._executeAction('/rest/navigate/volumeDown');
+    };
+
     Frontend._executeAction = function(action, callback) {
       $resource(action).get({frontend: Frontend.getSelected()}, callback);
     }

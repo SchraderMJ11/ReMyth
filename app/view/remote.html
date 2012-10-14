@@ -2,39 +2,38 @@
   <div class="row display">
     <h1>{{ frontendState.title}}</h4>
   </div>
+
   <div class="row display">
     <div style="background-color: #C0C0C0; height: 32px; width: 100%;">
       <div style="background-color: red; height: 32px; width: {{ progress }}%;"> </div>
     </div>
   </div>
 
-  <div class="row display" style="margin-top: 30px;">
-    <div class="two mobile-four columns">
-      <div class="big button" ng:click="executeSkipCommercialBack()">Back</div>
+  <div class="row display">
+    <div class="three mobile-four columns">
+      <div class="big button" style="width: 100%; margin-top: 8px;" ng:click="executeSkipCommercialBack()">Back</div>
+
+      <div class="big button" style="width: 100%; margin-top: 8px;" ng:click="executeSkipCommercial()">Next</div>
     </div>
 
-    <div class="two mobile-four columns">
-      <div class="big button" ng:click="decreaseSpeed()">Slow Down</div>
+    <div class="three mobile-four columns">
+      <div class="big button" style="width: 100%; margin-top: 8px;" ng:click="decreaseSpeed()">Slow Down</div>
+
+      <div class="big button" style="width: 100%; margin-top: 8px;" ng:click="increaseSpeed()">Speed Up</div>
     </div>
 
-    <div class="two mobile-four columns">
-      <div class="big button" ng:click="executeStop()">Stop</div>
+    <div class="three mobile-four columns">
+      <div class="big button" style="width: 100%; margin-top: 8px;" ng:click="executeStop()">Stop</div>
+
+      <div class="big button" style="width: 100%; margin-top: 8px;" ng:click="executePause()" ng:show="playSpeed == '1'">Pause</div>
+
+      <div class="big button" style="width: 100%; margin-top: 8px;" ng:click="executePlay()" ng:hide="playSpeed == '1'">Play</div>
     </div>
 
-    <div class="two mobile-four columns" ng:show="playSpeed == '1'">
-      <div class="big button" ng:click="executePause()">Pause</div>
-    </div>
+    <div class="three mobile-four columns">
+      <div class="big button" style="width: 100%; margin-top: 8px;" ng:click="volumeUp()">Volume Up</div>
 
-    <div class="two mobile-four columns" ng:hide="playSpeed == '1'">
-      <div class="big button" ng:click="executePlay()">Play</div>
-    </div>
-
-    <div class="two mobile-four columns" ng:click="increaseSpeed()">
-      <div class="big button" ng:click="increaseSpeed()">Speed Up</div>
-    </div>
-
-    <div class="two mobile-four columns">
-      <div class="big button" ng:click="executeSkipCommercial()">Next</div>
+      <div class="big button" style="width: 100%; margin-top: 8px;" ng:click="volumeDown()">Volume Down</div>
     </div>
   </div>
 </div>
