@@ -20,9 +20,9 @@ Installation
     npm install optimist
     npm install stack
 # Hack mdns
-  The dependency mdns expects all 
+  The dependency mdns expects all service names to be 14 characters or less.  Since MythTV's service names are longer than 14 characters this isn't going to work.
   
-  Edit file node_modules/mdns/lib/service_type.js.  In this file there are 2 spots that check for a length of 14 or less.  Since MythTV's service names are longer than 14 characters this isn't going to work.  Comment out those checks.  I have not found this to harm the application in any way.
+  Edit file node_modules/mdns/lib/service_type.js.  In this file there are 2 spots that check for a length of 14 or less.  Comment out those checks.  I have not found this to harm the application in any way.
 # Run "node spawn.js"
 
 More coming soon!
