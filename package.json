@@ -1,0 +1,26 @@
+{
+  "name": "ReMyth",
+  "description": "A simple remote control for Myth TV",
+  "version": "0.1.0",
+  "homepage": "https://github.com/SchraderMJ11/ReMyth",
+  "author": "Matthew J. Schrader",
+  "directories": {
+    "public": "./app"
+  },
+  "engines": {
+    "node": ">= 0.4.0"
+  },
+  "dependencies": {
+    "creationix": "0.3.1",
+    "forever-monitor": "1.1.0",
+    "mdns": "0.0.7",
+    "optimist": "0.3.5",
+    "stack": "0.1.0"
+  },
+  "devDependencies": {
+  },
+  "bin": {
+    "remyth": "server.js",
+    "spawn": "spawn.js"
+  }
+}
