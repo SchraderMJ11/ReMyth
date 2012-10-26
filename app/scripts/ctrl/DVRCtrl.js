@@ -33,17 +33,20 @@ function DVRCtrl($scope, $location, $timeout, $rootScope, Recording, Frontend, U
     $scope.previousRecordingConfirmNeeded = true;
   }
   $scope.ignorePreviousRecording = function() {
-    $scope.resetPreviousRecording();
-  }
-
-  $scope.resetPreviousRecording = function() {
     $scope.previousRecordingConfirmNeeded = false;
     $scope.previousRecording = undefined;
   }
 
   $scope.deleteRecording = function(recording) {
     Recording.deleteRecording(recording, function() {
-      $scope.resetPreviousRecording();
+      if($scope.selectedRecording.ProgramId === recording.ProgramId) {
+        $scope.selectedRecording = undefined;
+      }
+      if($scope.previousRecording.ProgramId === recording.ProgramId) {
+        $scope.previousRecordingConfirmNeeded = false;
+        $scope.previousRecording = undefined;
+      }
+
       $scope.recordings = Recording.queryList();
     });
   }
