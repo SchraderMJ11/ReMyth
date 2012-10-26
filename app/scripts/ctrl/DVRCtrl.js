@@ -11,12 +11,22 @@ function DVRCtrl($scope, $location, $timeout, $rootScope, Recording, Frontend, U
 
   $scope.playingRecording = false;
 
+  $scope.selectedRecording = undefined;
+
   $scope.clickRecording = function(recording) {
     $scope.playingRecording = true;
     Frontend.playRecording(recording, Frontend.getSelected());
     $rootScope.previousRecording = recording;
 
     $location.path('/remote');
+  }
+
+  $scope.clickDeleteRecording = function(recording) {
+    $scope.selectedRecording = recording;
+  }
+
+  $scope.cancelDeleteRecording = function() {
+    $scope.selectedRecording = undefined;
   }
 
   $scope.clickDeletePreviousRecording = function() {

@@ -27,15 +27,27 @@
 <div class="row" ng:show="recordings != undefined">
   <div class="twelve columns">
     <div class="row recording" ng:repeat="recording in recordings | filter: filterLiveTV | orderBy:'StartTime':reverse" ng:click="clickRecording(recording)">
-      <div class="four columns">
+      <div class="four columns recording-img">
         <img ng:src="/rest/dvr/image?ChanId={{ recording.Channel.ChanId }}&StartTime={{ recording.StartTime }}">
       </div>
-      <div class="eight columns">
-        <h4>{{ recording.Title }} 
-          <small ng:show="recording.SubTitle != undefined && recording.SubTitle.length > 0">- {{ recording.SubTitle }}</small>
-        </h4>
-        <h4><small>{{ recording.StartTime | date:'MMM d, y h:mm a' }}</small></h4>
-        <p>{{ recording.Description }}</p>
+      <div class="eight columns recording-propo">
+        <div>
+          <h4>{{ recording.Title }} 
+            <small ng:show="recording.SubTitle != undefined && recording.SubTitle.length > 0">- {{ recording.SubTitle }}</small>
+          </h4>
+          <h4><small>{{ recording.StartTime | date:'MMM d, y h:mm a' }}</small></h4>
+          <p>{{ recording.Description }}</p>
+        </div>
+        <div>
+          <button class="small-button" ng:click="clickDeleteRecording(recording); $event.stopPropagation();">Delete</a>
+        </div>
+        <div ng:show="selectedRecording.ProgramId == recording.ProgramId">
+          <div class="question">Are you sure you want delete?</div>
+          <div>
+            <button class="small-button" ng:click="deleteRecording(recording); $event.stopPropagation();">Yes</button>
+            <button class="small-button" ng:click="cancelDeleteRecording(); $event.stopPropagation();">No</button>
+          </div>
+        </div>
       </div>
     </div>
   </div>
