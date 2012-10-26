@@ -22,11 +22,11 @@ function DVRCtrl($scope, $location, $timeout, $rootScope, Recording, Frontend, U
   }
 
   $scope.clickDeleteRecording = function(recording) {
-    if($scope.selectedRecording === undefined) {
-      $scope.selectedRecording = recording;
+    if($scope.selectedRecording !== undefined && $scope.selectedRecording.ProgramId === recording.ProgramId) {
+      $scope.selectedRecording = undefined;
     }
     else {
-      $scope.selectedRecording = undefined;
+      $scope.selectedRecording = recording;
     }
   }
 
@@ -69,7 +69,7 @@ function DVRCtrl($scope, $location, $timeout, $rootScope, Recording, Frontend, U
     var selected = Frontend.getSelected();
     var status = Frontend.getStatus(selected, function() {
       if(status != undefined && status.FrontendStatus != undefined && status.FrontendStatus.State != undefined &&
-        (status.FrontendStatus.State.state === 'WatchingPreRecorded' || status.FrontendStatus.State.state === 'WatchingRecording') {
+        (status.FrontendStatus.State.state === 'WatchingPreRecorded' || status.FrontendStatus.State.state === 'WatchingRecording')) {
         $location.path('/remote');
       }
     })
