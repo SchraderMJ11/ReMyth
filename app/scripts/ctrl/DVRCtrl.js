@@ -19,7 +19,7 @@ function DVRCtrl($scope, $location, $timeout, $rootScope, Recording, Frontend, U
     $location.path('/remote');
   }
 
-  $scope.clickDeleteRecording = function() {
+  $scope.clickDeletePreviousRecording = function() {
     $scope.previousRecordingConfirmNeeded = true;
   }
   $scope.ignorePreviousRecording = function() {
@@ -37,7 +37,7 @@ function DVRCtrl($scope, $location, $timeout, $rootScope, Recording, Frontend, U
       $scope.recordings = Recording.queryList();
     });
   }
-  $scope.cancelDeleteRecording = function() {
+  $scope.cancelDeletePreviousRecording = function() {
     $scope.previousRecordingConfirmNeeded = false;
   }
 
