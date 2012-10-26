@@ -14,6 +14,7 @@ Installation
     curl http://npmjs.org/install.sh | sudo sh
 # Install dependencies
     sudo apt-get install libavahi-compat-libdnssd-dev
+# Within the ReMyth directory
     npm install
 # Hack mdns
   The dependency mdns expects all service names to be 14 characters or less.  Since MythTV's service names are longer than 14 characters this isn't going to work.
