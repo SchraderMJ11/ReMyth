@@ -17,7 +17,7 @@ angular.module('RecordingModule', ['ngResource']).factory('Recording',
       $resource('/rest/dvr/removeRecording').get(
         {
           ChanId: recording.Channel.ChanId,
-          StartTime: recording.StartTime
+          StartTime: recording.Recording.StartTs
         }, callback);
     }
 

@@ -36,7 +36,7 @@ angular.module('FrontendModule', ['ngCookies', 'ngResource']).factory('Frontend'
       $resource('/rest/dvr/playRecording').get(
         {
           ChanId: recording.Channel.ChanId,
-          StartTime: recording.StartTime,
+          StartTime: recording.Recording.StartTs,
           frontend: frontend
         });
     }
