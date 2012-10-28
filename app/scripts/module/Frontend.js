@@ -14,14 +14,17 @@ angular.module('FrontendModule', ['ngCookies', 'ngResource']).factory('Frontend'
       console.log('selecting frontend: ' + frontend);
 
       $resource('/rest/frontends/select').get({name: frontend, username: user}, function() {
-        $cookieStore.put('ReMythSelectedFrontend', frontend);
+        Frontend.selectedFrontend = frontend;
+
+        //$cookieStore.put('ReMythSelectedFrontend', frontend);
 
         callback();
       });
     }
 
     Frontend.isSelected = function() {
-      var selectedFrontend = $cookieStore.get('ReMythSelectedFrontend');
+      var selectedFrontend = Frontend.selectedFrontend;
+      //var selectedFrontend = $cookieStore.get('ReMythSelectedFrontend');
 
       console.log(selectedFrontend);
 
@@ -29,7 +32,8 @@ angular.module('FrontendModule', ['ngCookies', 'ngResource']).factory('Frontend'
     }
 
     Frontend.getSelected = function() {
-      return $cookieStore.get('ReMythSelectedFrontend');
+      return Frontend.selectedFrontend;
+      //return $cookieStore.get('ReMythSelectedFrontend');
     }
 
     Frontend.playRecording = function(recording, frontend) {
