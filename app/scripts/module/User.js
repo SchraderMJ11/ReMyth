@@ -1,8 +1,6 @@
 angular.module('UserModule', ['ngCookies']).factory('User', function($cookieStore) {
   var User = {};
 
-  User.username = undefined;
-
   User.isLoggedIn = function () {
     console.log('checking if user is logged in');
     if(!this.username) {

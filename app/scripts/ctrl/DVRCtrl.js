@@ -1,5 +1,9 @@
 function DVRCtrl($scope, $location, $timeout, $rootScope, Recording, Frontend, User) {
 
+  if(!Frontend.isSelected()) {
+    $location.path('/');
+  }
+
   $scope.filterLiveTV = {"Recording.RecGroup": "!LiveTV"};
 
   $scope.format = 'M/d/yy h:mm:ss a';

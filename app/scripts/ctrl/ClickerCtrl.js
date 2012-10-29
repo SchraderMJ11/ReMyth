@@ -1,4 +1,9 @@
 function ClickerCtrl($scope, $location, Frontend) {
+  
+  if(!Frontend.isSelected()) {
+    $location.path('/');
+  }
+
   $scope.navigateUp = function () {
     Frontend.navigateUp();
   };

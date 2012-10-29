@@ -1,5 +1,4 @@
 function LoginCtrl($scope, $location, User, Frontend) {
-  $scope.username = User.getUsername();
   $scope.frontend = undefined;
   
   $scope.frontends = Frontend.query({}, function() {
@@ -13,20 +12,17 @@ function LoginCtrl($scope, $location, User, Frontend) {
   });
 
   $scope.clickLogin = function() {
-    if(User.login($scope.username)) {
-
-      //Hack, look into why this is needed
-      var name = $scope.frontend;
-      if(name.name) {
-        name = name.name;
-      }
-
-      Frontend.selectFrontend($scope.username, name, function () { 
-        if(User.isLoggedIn() && Frontend.isSelected()) {
-          $location.path('/recordings');
-        }
-      });
+    //Hack, look into why this is needed
+    var name = $scope.frontend;
+    if(name.name) {
+      name = name.name;
     }
+
+    Frontend.selectFrontend(name, function () { 
+      if(Frontend.isSelected()) {
+        $location.path('/recordings');
+      }
+    });
   }
 
   $scope.getFrontendComboSelected = function(name) {

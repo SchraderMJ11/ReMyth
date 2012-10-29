@@ -7,13 +7,14 @@ angular.module('FrontendModule', ['ngCookies', 'ngResource']).factory('Frontend'
     }
 
     Frontend.getStatus = function(frontend, callback) {
-      return $resource('/rest/frontend/status').get({frontend: frontend}, callback);
+      var time = new Date();
+      return $resource('/rest/frontend/status').get({frontend: frontend, buster: time}, callback);
     }
 
-    Frontend.selectFrontend = function(user, frontend, callback) {
+    Frontend.selectFrontend = function(frontend, callback) {
       console.log('selecting frontend: ' + frontend);
 
-      $resource('/rest/frontends/select').get({name: frontend, username: user}, function() {
+      $resource('/rest/frontends/select').get({name: frontend}, function() {
         Frontend.selectedFrontend = frontend;
 
         //$cookieStore.put('ReMythSelectedFrontend', frontend);

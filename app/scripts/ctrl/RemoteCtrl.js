@@ -1,4 +1,9 @@
 function RemoteCtrl($scope, $timeout, $location, $rootScope, Frontend, User, Recording) {
+  
+  if(!Frontend.isSelected()) {
+    $location.path('/');
+  }
+
   $scope.frontendState = undefined;
   $scope.progress = undefined;
   $scope.playSpeed = undefined;
