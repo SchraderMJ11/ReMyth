@@ -11,29 +11,47 @@
 
   <div class="row display">
     <div class="three mobile-four columns">
-      <div class="big button" style="width: 100%; margin-top: 8px;" ng:click="executeSkipCommercialBack()">Back</div>
+      <div style="width: 100%; margin-top: 8px;">
+        <button class="small-button" style="width: 100%" ng:click="executeSkipCommercialBack(); $event.stopPropagation();">Back</button>
+      </div>
 
-      <div class="big button" style="width: 100%; margin-top: 8px;" ng:click="executeSkipCommercial()">Next</div>
+      <div style="width: 100%; margin-top: 8px;">
+        <button class="small-button" style="width: 100%" ng:click="executeSkipCommercial(); $event.stopPropagation();">Next</button>
+      </div>
     </div>
 
     <div class="three mobile-four columns">
-      <div class="big button" style="width: 100%; margin-top: 8px;" ng:click="decreaseSpeed()">Slow Down</div>
+      <div style="width: 100%; margin-top: 8px;">
+        <button class="small-button" style="width: 100%" ng:click="decreaseSpeed(); $event.stopPropagation();">Slow Down</button>
+      </div>
 
-      <div class="big button" style="width: 100%; margin-top: 8px;" ng:click="increaseSpeed()">Speed Up</div>
+      <div style="width: 100%; margin-top: 8px;">
+        <button class="small-button" style="width: 100%" ng:click="increaseSpeed(); $event.stopPropagation();">Speed Up</button>
+      </div>
     </div>
 
     <div class="three mobile-four columns">
-      <div class="big button" style="width: 100%; margin-top: 8px;" ng:click="executeStop()">Stop</div>
+      <div style="width: 100%; margin-top: 8px;">
+        <button class="small-button" style="width: 100%" ng:click="executeStop(); $event.stopPropagation();">Stop</button>
+      </div>
 
-      <div class="big button" style="width: 100%; margin-top: 8px;" ng:click="executePause()" ng:show="playSpeed == '1'">Pause</div>
+      <div style="width: 100%; margin-top: 8px;" ng:show="playSpeed == '1'">
+        <button class="small-button" style="width: 100%" ng:click="executePause(); $event.stopPropagation();">Pause</button>
+      </div>
 
-      <div class="big button" style="width: 100%; margin-top: 8px;" ng:click="executePlay()" ng:hide="playSpeed == '1'">Play</div>
+      <div style="width: 100%; margin-top: 8px;" ng:hide="playSpeed == '1'">
+        <button class="small-button" style="width: 100%" ng:click="executePlay(); $event.stopPropagation();">Play</button>
+      </div>
     </div>
 
     <div class="three mobile-four columns">
-      <div class="big button" style="width: 100%; margin-top: 8px;" ng:click="volumeUp()">Volume Up</div>
+      <div style="width: 100%; margin-top: 8px;">
+        <button class="small-button" style="width: 100%" ng:click="volumeUp(); $event.stopPropagation();">Volume Up</button>
+      </div>
 
-      <div class="big button" style="width: 100%; margin-top: 8px;" ng:click="volumeDown()">Volume Down</div>
+      <div style="width: 100%; margin-top: 8px;">
+        <button class="small-button" style="width: 100%" ng:click="volumeDown(); $event.stopPropagation();">Volume Down</button>
+      </div>
     </div>
   </div>
 </div>
