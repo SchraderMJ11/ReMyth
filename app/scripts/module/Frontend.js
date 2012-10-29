@@ -3,18 +3,18 @@ angular.module('FrontendModule', ['ngCookies', 'ngResource']).factory('Frontend'
     var Frontend = {};
 
     Frontend.query = function(opts, callback) {
+      opts.buster = new Date();
       return $resource('/rest/frontends/list').query(opts, callback);
     }
 
     Frontend.getStatus = function(frontend, callback) {
-      var time = new Date();
-      return $resource('/rest/frontend/status').get({frontend: frontend, buster: time}, callback);
+      return $resource('/rest/frontend/status').get({frontend: frontend, buster: new Date()}, callback);
     }
 
     Frontend.selectFrontend = function(frontend, callback) {
       console.log('selecting frontend: ' + frontend);
 
-      $resource('/rest/frontends/select').get({name: frontend}, function() {
+      $resource('/rest/frontends/select').get({name: frontend, buster: new Date()}, function() {
         Frontend.selectedFrontend = frontend;
 
         //$cookieStore.put('ReMythSelectedFrontend', frontend);
@@ -42,7 +42,8 @@ angular.module('FrontendModule', ['ngCookies', 'ngResource']).factory('Frontend'
         {
           ChanId: recording.Channel.ChanId,
           StartTime: recording.Recording.StartTs,
-          frontend: frontend
+          frontend: frontend,
+          buster: new Date()
         });
     }
 
@@ -115,7 +116,7 @@ angular.module('FrontendModule', ['ngCookies', 'ngResource']).factory('Frontend'
     };
 
     Frontend._executeAction = function(action, callback) {
-      $resource(action).get({frontend: Frontend.getSelected()}, callback);
+      $resource(action).get({frontend: Frontend.getSelected(), buster: new Date()}, callback);
     }
 
     return Frontend;
