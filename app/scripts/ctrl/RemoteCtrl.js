@@ -8,6 +8,14 @@ function RemoteCtrl($scope, $timeout, $location, $rootScope, Frontend, User, Rec
   $scope.progress = undefined;
   $scope.playSpeed = undefined;
 
+  $scope.getProgressBar = function() {
+    return {
+      "background-color": "red",
+      "height": "32px",
+      "width": "" + $scope.progress + "%"
+    };
+  }
+
   $scope.executeSkipCommercialBack = function() {
     Frontend.executeSkipCommercialBack();
   }

@@ -5,7 +5,7 @@
 
   <div class="row display">
     <div style="background-color: #C0C0C0; height: 32px; width: 100%;">
-      <div style="background-color: red; height: 32px; width: {{ progress }}%;">{{ progress }}</div>
+      <div ng:style="getProgressBar()"></div>
     </div>
   </div>
 
