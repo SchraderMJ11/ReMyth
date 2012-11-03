@@ -54,10 +54,10 @@ function DVRCtrl($scope, $location, $timeout, $rootScope, Recording, Frontend, U
 
   $scope.deleteRecording = function(recording) {
     Recording.deleteRecording(recording, function() {
-      if($scope.selectedRecording.ProgramId === recording.ProgramId) {
+      if($scope.selectedRecording !== undefined && $scope.selectedRecording.ProgramId === recording.ProgramId) {
         $scope.selectedRecording = undefined;
       }
-      if($scope.previousRecording.ProgramId === recording.ProgramId) {
+      if($scope.previousRecording !== undefined && $scope.previousRecording.ProgramId === recording.ProgramId) {
         $scope.previousRecordingConfirmNeeded = false;
         $scope.previousRecording = undefined;
       }
