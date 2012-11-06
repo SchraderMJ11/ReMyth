@@ -144,7 +144,8 @@ exports.sendRequest = function(response, service, api, parameters, root, fronten
       http_res.on("end", function () {
         if(http_res === undefined 
           || http_res.statusCode === undefined 
-          || http_res.statusCode.toString()[0]) {
+          || http_res.statusCode.toString()[0] === 4
+          || http_res.statusCode.toString()[0] === 5) {
 
           response.writeHead(http_res.statusCode);
           response.end(data);
