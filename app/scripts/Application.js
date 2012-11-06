@@ -1,6 +1,5 @@
 angular.module('ReMyth', ['ngResource', 'UserModule', 'FrontendModule', 'RecordingModule']).config(
   function($routeProvider) {
-    console.log('constructing application');
     $routeProvider
       .when('/', {controller: LoginCtrl, templateUrl: 'app/view/login.html'})
       .when('/recordings', {controller: DVRCtrl, templateUrl: '/app/view/recordings.html'})
