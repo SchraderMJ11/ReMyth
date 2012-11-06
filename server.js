@@ -22,6 +22,7 @@ HTTP.createServer(Stack(
   ReMyth.ReMythNavigate(),
   ReMyth.ReMythDVR(),
   ReMyth.ReMythFrontends(),
+  ReMyth.ReMythVideo(),
   Creationix.static("/app", root + "/app"),
   Creationix.static("/", root + "/index.html")  
 )).listen(port);

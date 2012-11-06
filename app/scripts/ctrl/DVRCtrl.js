@@ -81,7 +81,11 @@ function DVRCtrl($scope, $location, $timeout, $rootScope, Recording, Frontend, U
         if (state === 'WatchingPreRecorded' || state === 'WatchingRecording') {
           $location.path('/remote');
           return;
+        } else if(state === 'WatchingVideo') {
+          $location.path('/videos');
+          return;
         }
+
         $scope.initialized = true;
       }
     });

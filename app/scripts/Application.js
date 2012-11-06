@@ -1,4 +1,4 @@
-angular.module('ReMyth', ['ngResource', 'UserModule', 'FrontendModule', 'RecordingModule']).config(
+angular.module('ReMyth', ['ngResource', 'UserModule', 'FrontendModule', 'RecordingModule', 'VideoModule']).config(
   function($routeProvider) {
     $routeProvider
       .when('/', {controller: LoginCtrl, templateUrl: 'app/view/login.html'})

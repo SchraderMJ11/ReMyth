@@ -1,10 +1,12 @@
-function VideoCtrl($scope, $timeout, $location, $rootScope, Frontend) {
+function VideoCtrl($scope, $timeout, $location, $rootScope, Frontend, Video) {
 
   if(!Frontend.isSelected()) {
     $location.path('/');
   }
 
   $scope.initialized = false;
+
+  $scope.videos = Video.list();
   
   $scope.monitorStatus = function() {
     var status = Frontend.getStatus(Frontend.getSelected(), function() {
@@ -13,13 +15,18 @@ function VideoCtrl($scope, $timeout, $location, $rootScope, Frontend) {
         $location.path('/clicker');
         return;
       }
-      else if(state !== 'WatchingPreRecorded' 
-          && state !== 'WatchingRecording') {
+      else if(state === 'WatchingPreRecorded' 
+          || state === 'WatchingRecording') {
         $location.path('/recordings');
         return;
       }
 
-      $scopoe.initialized = true;
+      $scope.initialized = true;
     });
   }
+
+  $scope._monitor = setInterval($scope.monitorStatus, 1000);
+  $scope.$on('$destroy', function() { 
+    clearInterval($scope._monitor); 
+  });
 }

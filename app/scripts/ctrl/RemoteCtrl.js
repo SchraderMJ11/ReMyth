@@ -60,7 +60,10 @@ function RemoteCtrl($scope, $timeout, $location, $rootScope, Frontend, User, Rec
   $scope.monitorStatus = function() {
     var status = Frontend.getStatus(Frontend.getSelected(), function() {
       var state = status.FrontendStatus.State.state;
-      if(state !== 'WatchingPreRecorded' 
+      if(state === 'WatchingVideo') {
+        $location.path('/videos');
+      }
+      else if(state !== 'WatchingPreRecorded' 
           && state !== 'WatchingRecording') {
         $location.path('/recordings');
       } else {

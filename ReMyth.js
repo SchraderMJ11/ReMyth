@@ -1,5 +1,5 @@
 var restUtil = require('./ReMythRestUtil');
-var services = ['ReMythNavigate.js', 'ReMythDVR.js', 'ReMythFrontends.js'];
+var services = ['ReMythNavigate.js', 'ReMythDVR.js', 'ReMythFrontends.js', 'ReMythVideo.js'];
 
 require('fs').readdirSync(__dirname).forEach(function (name) {
   if (restUtil.contains(services, name)) {
