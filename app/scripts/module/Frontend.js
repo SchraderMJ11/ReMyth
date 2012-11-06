@@ -27,8 +27,6 @@ angular.module('FrontendModule', ['ngCookies', 'ngResource']).factory('Frontend'
       var selectedFrontend = Frontend.selectedFrontend;
       //var selectedFrontend = $cookieStore.get('ReMythSelectedFrontend');
 
-      console.log(selectedFrontend);
-
       return (selectedFrontend !== undefined && selectedFrontend.length > 0);
     }
 
