@@ -4,6 +4,8 @@ function DVRCtrl($scope, $location, $timeout, $rootScope, Recording, Frontend, U
     $location.path('/');
   }
 
+  $scope.initialized = false;
+
   $scope.filterLiveTV = {"Recording.RecGroup": "!LiveTV"};
 
   $scope.format = 'M/d/yy h:mm:ss a';
@@ -78,7 +80,9 @@ function DVRCtrl($scope, $location, $timeout, $rootScope, Recording, Frontend, U
         var state = status.FrontendStatus.State.state;
         if (state === 'WatchingPreRecorded' || state === 'WatchingRecording') {
           $location.path('/remote');
+          return;
         }
+        $scope.initialized = true;
       }
     });
   }

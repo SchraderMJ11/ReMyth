@@ -1,4 +1,4 @@
-<div class="row" ng:show="previousRecording != undefined">
+<div class="row" ng:show="initialized == true && previousRecording != undefined">
   <div class="six columns" >
     <div class="row previousRecording">
       <div class="four columns">
@@ -24,7 +24,7 @@
   </div>
 </div>
 
-<div class="row" ng:show="recordings != undefined">
+<div class="row" ng:show="initialized && recordings != undefined">
   <div class="twelve columns">
     <div class="row recording" ng:repeat="recording in recordings | filter: filterLiveTV | orderBy:'StartTime':reverse" ng:click="clickRecording(recording)">
       <div class="four columns recording-img">
