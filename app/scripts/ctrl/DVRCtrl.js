@@ -47,6 +47,7 @@ function DVRCtrl($scope, $location, $timeout, $rootScope, Recording, Frontend, U
       $scope.previousRecordingConfirmNeeded = true;
     }
   }
+
   $scope.ignorePreviousRecording = function() {
     $scope.previousRecordingConfirmNeeded = false;
     $scope.previousRecording = undefined;
@@ -72,11 +73,14 @@ function DVRCtrl($scope, $location, $timeout, $rootScope, Recording, Frontend, U
   $scope.monitorStatus = function() {
     var selected = Frontend.getSelected();
     var status = Frontend.getStatus(selected, function() {
-      if(status != undefined && status.FrontendStatus != undefined && status.FrontendStatus.State != undefined &&
-        (status.FrontendStatus.State.state === 'WatchingPreRecorded' || status.FrontendStatus.State.state === 'WatchingRecording')) {
-        $location.path('/remote');
+      if(status != undefined && status.FrontendStatus != undefined 
+          && status.FrontendStatus.State != undefined) {
+        var state = status.FrontendStatus.State.state;
+        if (state === 'WatchingPreRecorded' || state === 'WatchingRecording') {
+          $location.path('/remote');
+        }
       }
-    })
+    });
   }
 
   $scope._monitor = setInterval($scope.monitorStatus, 1000);
