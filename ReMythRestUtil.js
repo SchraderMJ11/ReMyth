@@ -142,6 +142,14 @@ exports.sendRequest = function(response, service, api, parameters, root, fronten
       });
 
       http_res.on("end", function () {
+        if(http_res === undefined 
+          || http_res.statusCode === undefined 
+          || http_res.statusCode.toString()[0]) {
+
+          response.writeHead(http_res.statusCode);
+          response.end(data);
+          return;
+        }
         var returnString = data;
         if(root) {
           returnString = getRoot(returnString, root);
