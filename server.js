@@ -40,7 +40,6 @@ frontendBrowser.on('serviceUp', function(service) {
   service.host = formatHost(service.host);
 
   global.frontends[service.name] = service;
-  console.log(service);
 });
 frontendBrowser.on('serviceDown', function(service) {
   delete global.frontends[service.name];
@@ -53,12 +52,29 @@ masterBackendBrowser.on('serviceUp', function(service) {
   service.host = formatHost(service.host);
 
   global.masterBackend = service;
-  console.log(service);
 });
-masterBackendBrowser.on('servcieDown', function(service) {
-  delete global.masterBackend;
+masterBackendBrowser.on('serviceDown', function(service) {
+  if(global.masterBackend !== undefined && service.name === global.masterBackend.name) {
+    delete global.masterBackend;
+  }
 });
 masterBackendBrowser.start();
+
+// Attach listener for master mythbackend service
+var masterBackendTempBrowser = mdns.createBrowser(mdns.tcp('mythbackend'));
+masterBackendTempBrowser.on('serviceUp', function(service) {
+  if(service.txtRecord.level === 'master') {
+    service.host = formatHost(service.host);
+
+    global.masterBackend = service;
+  }
+});
+masterBackendTempBrowser.on('serviceDown', function(service) {
+  if(global.masterBackend !== undefined && service.name === global.masterBackend.name) {
+    delete global.masterBackend;
+  }
+});
+masterBackendTempBrowser.start();
 
 // Give the user a nice message on the standard output
 console.log("Serving %s at http://localhost:%s/", root, port);
