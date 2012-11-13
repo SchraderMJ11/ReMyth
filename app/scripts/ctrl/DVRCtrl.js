@@ -19,6 +19,10 @@ function DVRCtrl($scope, $location, $timeout, $rootScope, Recording, Frontend, U
 
   $scope.selectedRecording = undefined;
 
+  $scope.refreshRecordings = function() {
+    $scope.recordings = Recording.queryList();
+  }
+
   $scope.clickRecording = function(recording) {
     $scope.playingRecording = true;
     Frontend.playRecording(recording, Frontend.getSelected());
@@ -65,7 +69,7 @@ function DVRCtrl($scope, $location, $timeout, $rootScope, Recording, Frontend, U
         $scope.previousRecording = undefined;
       }
 
-      $scope.recordings = Recording.queryList();
+      setTimeout($scope.refreshRecordings, 250);
     });
   }
   $scope.cancelDeletePreviousRecording = function() {
