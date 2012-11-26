@@ -19,6 +19,17 @@ function DVRCtrl($scope, $location, $timeout, $rootScope, Recording, Frontend, U
 
   $scope.selectedRecording = undefined;
 
+  $scope.sortOrder = "reverse";
+  $scope.searchText = undefined;
+
+  $scope.switchSortOrder = function() {
+    if($scope.sortOrder === undefined) {
+      $scope.sortOrder = "reverse";
+    } else {
+      $scope.sortOrder = undefined;
+    }
+  }
+
   $scope.refreshRecordings = function() {
     $scope.recordings = Recording.queryList();
   }

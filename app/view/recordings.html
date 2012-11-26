@@ -1,3 +1,14 @@
+<div class="row" ng:show="initialized == true && recordings != undefined" style="margin-bottom: 8px;">
+  <div class="four columns" >
+    <button class="small-button" style="width: 100%; text-align: center;"ng:click="switchSortOrder()" ng:show="sortOrder != undefined">Down</button>
+    <button class="small-button" class="four columns" style="text-align: center;" ng:click="switchSortOrder()" ng:show="sortOrder == undefined">Up</button>
+  </div>
+
+  <div class="eight columns" >
+    <input ng-model="searchText" style="width: 100%" placeholder="Filter">
+  </div>
+</div>
+
 <div class="row" ng:show="initialized == true && previousRecording != undefined">
   <div class="six columns" >
     <div class="row previousRecording">
@@ -26,7 +37,7 @@
 
 <div class="row" ng:show="initialized && recordings != undefined">
   <div class="twelve columns">
-    <div class="row recording" ng:repeat="recording in recordings | filter: filterLiveTV | orderBy:'StartTime':reverse" ng:click="clickRecording(recording)">
+    <div class="row recording" ng:repeat="recording in recordings | filter: filterLiveTV | filter: searchText | orderBy:'StartTime':sortOrder" ng:click="clickRecording(recording)">
       <div class="four columns recording-img">
         <img ng:src="/rest/dvr/image?ChanId={{ recording.Channel.ChanId }}&StartTime={{ recording.Recording.StartTs }}">
       </div>
