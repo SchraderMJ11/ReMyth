@@ -39,6 +39,16 @@ function RemoteCtrl($scope, $timeout, $location, $rootScope, Frontend, User, Rec
     Frontend.executePlay();
   }
 
+  $scope.rewind = function() {
+    $scope.playSpeed = -3;
+    Frontend.executeRewind();
+  }
+
+  $scope.fastForward = function() {
+    $scope.playSpeed = 3;
+    Frontend.executeFastForward();
+  }
+
   $scope.increaseSpeed = function() {
     $scope.playSpeed = 2;
     Frontend.increaseSpeed();

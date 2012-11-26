@@ -8,7 +8,7 @@ var support = {
     'guide', 'livetv', 'mainmenu', 
     'commercialSkipBack', 'commercialSkip', 
     'pause', 'play', 'stop',
-    'increaseSpeed', 'decreaseSpeed',
+    'rewind', 'fastForward', 'increaseSpeed', 'decreaseSpeed',
     'volumeUp', 'volumeDown']
 };
 
@@ -49,6 +49,10 @@ module.exports = function setup(mount, root) {
       submitAction = "PLAY";
     } else if(action === 'stop') {
       submitAction = "STOPPLAYBACK";
+    } else if(action === 'rewind') {
+      submitAction = "RWNDSTICKY";
+    } else if(action === 'fastForward') {
+      submitAction = "FFWDSTICKY";
     } else if(action === 'increaseSpeed') {
       submitAction = "SPEEDINC";
     } else if(action === 'decreaseSpeed') {

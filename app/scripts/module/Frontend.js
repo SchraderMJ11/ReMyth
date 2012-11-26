@@ -65,6 +65,14 @@ angular.module('FrontendModule', ['ngCookies', 'ngResource']).factory('Frontend'
       Frontend._executeAction('/rest/navigate/play', callback);
     }
 
+    Frontend.executeRewind = function(callback) {
+      Frontend._executeAction('/rest/navigate/rewind', callback);
+    }
+
+    Frontend.executeFastForward = function(callback) {
+      Frontend._executeAction('/rest/navigate/fastForward', callback);
+    }
+
     Frontend.increaseSpeed = function(callback) {
       Frontend._executeAction('/rest/navigate/increaseSpeed', callback);
     }

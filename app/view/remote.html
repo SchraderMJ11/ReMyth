@@ -22,11 +22,15 @@
 
     <div class="three mobile-four columns">
       <div style="width: 100%; margin-top: 8px;">
-        <button class="small-button" style="width: 100%" ng:click="decreaseSpeed(); $event.stopPropagation();">Slow Down</button>
+        <button class="small-button" style="width: 100%" ng:click="rewind(); $event.stopPropagation();">
+          Rewind <add ng:show="playSpeed < 0">Faster</add>
+        </button>
       </div>
 
       <div style="width: 100%; margin-top: 8px;">
-        <button class="small-button" style="width: 100%" ng:click="increaseSpeed(); $event.stopPropagation();">Speed Up</button>
+        <button class="small-button" style="width: 100%" ng:click="fastForward(); $event.stopPropagation();">
+          Fast Forward <add ng:show="playSpeed > 1">Faster</add>
+        </button>
       </div>
     </div>
 
