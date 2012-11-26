@@ -33,6 +33,10 @@ var formatHost = function(host) {
   }
 }
 
+//advertise that remyth is running
+var ad = mdns.createAdvertisement(mdns.tcp('remyth'), port);
+ad.start();
+
 // Attach listener for mythfrontend service
 global.frontends = {};
 global.selectedFrontend = {}
