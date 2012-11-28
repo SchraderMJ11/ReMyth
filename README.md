@@ -6,6 +6,8 @@ Introduction
 
 This project is meant to provide a nicer remote for your MythTV Frontends.  You will be able to view your recordings, as well as send actions to a frontend of your choosing.
 
+![Recordings Screenshot](http://i.imgur.com/BbLZ1.png)
+
 Installation
 ------------
 # Install NodeJS
