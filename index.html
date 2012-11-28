@@ -1,0 +1,77 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>ReMyth by SchraderMJ11</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="javascripts/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1 class="header">ReMyth</h1>
+        <p class="header">Control MythTV, in a smart way.</p>
+
+        <ul>
+          <li class="download"><a class="buttons" href="https://github.com/SchraderMJ11/ReMyth/zipball/master">Download ZIP</a></li>
+          <li class="download"><a class="buttons" href="https://github.com/SchraderMJ11/ReMyth/tarball/master">Download TAR</a></li>
+          <li><a class="buttons github" href="https://github.com/SchraderMJ11/ReMyth">View On GitHub</a></li>
+        </ul>
+
+        <p class="header">This project is maintained by <a class="header name" href="https://github.com/SchraderMJ11">SchraderMJ11</a></p>
+
+
+      </header>
+      <section>
+        <h1>ReMyth</h1>
+
+<h2>Introduction</h2>
+
+<p>This project is meant to provide a nicer remote for your MythTV Frontends.  You will be able to view your recordings, as well as send actions to a frontend of your choosing.</p>
+
+<h2>Installation</h2>
+
+<h1>Install NodeJS</h1>
+
+<p>Either follow instructions to install from source, or install from <a href="http://nodejs.org">http://nodejs.org</a>.</p>
+
+<h1>Install npm</h1>
+
+<pre><code>curl http://npmjs.org/install.sh | sudo sh
+</code></pre>
+
+<h1>Install dependencies</h1>
+
+<pre><code>sudo apt-get install libavahi-compat-libdnssd-dev
+</code></pre>
+
+<h1>Within the ReMyth directory</h1>
+
+<pre><code>npm install
+</code></pre>
+
+<h1>Hack mdns</h1>
+
+<p>The dependency mdns expects all service names to be 14 characters or less.  Since MythTV's service names are longer than 14 characters this isn't going to work.</p>
+
+<p>Edit file node_modules/mdns/lib/service_type.js.  In this file there are 2 spots that check for a length of 14 or less.  Comment out those checks.  I have not found this to harm the application in any way.</p>
+
+<h1>Run "node spawn.js"</h1>
+
+<p>More coming soon!  Please report any issues that you have with this application to me.  Also, if you are into development feel free to submit patches to me.</p>
+      </section>
+      <footer>
+        <p><small>Hosted on <a href="https://pages.github.com">GitHub Pages</a> using the Dinky theme</small></p>
+      </footer>
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+		
+  </body>
+</html>
