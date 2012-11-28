@@ -4,7 +4,7 @@ var restUtil = require('./ReMythRestUtil');
 
 var support = {
   methods: ['video'],
-  actions: ['list']
+  actions: ['list', 'play']
 };
 
 module.exports = function setup(mount, root) {
@@ -17,6 +17,13 @@ module.exports = function setup(mount, root) {
     var action = service.action;
     if(action === 'list') {
     	restUtil.sendRequest(res, 'Video', 'GetVideoList', undefined, 'VideoMetadataInfoList.VideoMetadataInfos');
+    } else if(action === 'play') {
+      console.log("Playing video: " + service.query.Id);
+      restUtil.sendRequest(res, 'Frontend', 'PlayVideo',
+        {
+          "Id": service.query.Id,
+          "UseBookmark": true
+        }, undefined, service.query.frontend);
     }
   };
 };

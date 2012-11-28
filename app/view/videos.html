@@ -1,9 +1,10 @@
 <div class="row" ng:show="initialized == true && videos != undefined">
   <div class="twelve columns">
-    <div class="row video" ng:repeat="video in videos">
-      <div class="eight columns video-propo">
+    <div class="row media-row" ng:repeat="video in videos" ng:click="clickVideo(video)">
+      <div class="eight columns media-propo">
         <div>
           <h4>{{ video.Title }}</h4>
+          <p>{{ video.Description }}</p>
         </div>
       </div>
     </div>

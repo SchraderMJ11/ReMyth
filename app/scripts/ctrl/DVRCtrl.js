@@ -93,11 +93,8 @@ function DVRCtrl($scope, $location, $timeout, $rootScope, Recording, Frontend, U
       if(status != undefined && status.FrontendStatus != undefined 
           && status.FrontendStatus.State != undefined) {
         var state = status.FrontendStatus.State.state;
-        if (state === 'WatchingPreRecorded' || state === 'WatchingRecording') {
+        if (state === 'WatchingPreRecorded' || state === 'WatchingRecording' || state === 'WatchingVideo') {
           $location.path('/remote');
-          return;
-        } else if(state === 'WatchingVideo') {
-          $location.path('/videos');
           return;
         }
 

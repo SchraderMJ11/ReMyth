@@ -4,6 +4,7 @@ function RemoteCtrl($scope, $timeout, $location, $rootScope, Frontend, User, Rec
     $location.path('/');
   }
 
+  $scope.mode = undefined;
   $scope.frontendState = undefined;
   $scope.progress = undefined;
   $scope.playSpeed = undefined;
@@ -14,6 +15,14 @@ function RemoteCtrl($scope, $timeout, $location, $rootScope, Frontend, User, Rec
       "height": "32px",
       "width": "" + $scope.progress + "%"
     };
+  }
+
+  $scope.getButtonColumnStyle = function() {
+    if($scope.mode === 'recording') {
+      return "three mobile-four columns";
+    } else {
+      return "four mobile-four columns";
+    }
   }
 
   $scope.executeSkipCommercialBack = function() {
@@ -70,20 +79,27 @@ function RemoteCtrl($scope, $timeout, $location, $rootScope, Frontend, User, Rec
   $scope.monitorStatus = function() {
     var status = Frontend.getStatus(Frontend.getSelected(), function() {
       var state = status.FrontendStatus.State.state;
-      if(state === 'WatchingVideo') {
-        $location.path('/videos');
-      }
-      else if(state !== 'WatchingPreRecorded' 
-          && state !== 'WatchingRecording') {
-        $location.path('/recordings');
+      if(state !== 'WatchingPreRecorded' 
+          && state !== 'WatchingRecording'
+          && state !== 'WatchingVideo') {
+        if($scope.mode === 'video') {
+          $location.path('/videos');
+        } else {
+          $location.path('/recordings');
+        }
       } else {
+        if(state === 'WatchingPreRecorded' || state === 'WatchingRecording') {
+          $scope.mode = 'recording';
+        } else {
+          $scope.mode = 'video';
+        }
         $scope.frontendState = status.FrontendStatus.State;
 
         $scope.progress = Math.round(($scope.frontendState.secondsplayed / $scope.frontendState.totalseconds) * 100);
         
         $scope.playSpeed = $scope.frontendState.playspeed;
 
-        if($rootScope.previousRecording === undefined) {
+        if($scope.mode === 'recording' && $rootScope.previousRecording === undefined) {
           $rootScope.previousRecording = Recording.query(status.FrontendStatus.State.chanid, status.FrontendStatus.State.starttime);
         }
       }

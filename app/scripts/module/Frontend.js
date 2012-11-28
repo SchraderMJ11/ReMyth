@@ -45,6 +45,15 @@ angular.module('FrontendModule', ['ngCookies', 'ngResource']).factory('Frontend'
         });
     }
 
+    Frontend.playVideo = function(video, frontend) {
+      $resource('/rest/video/play').get(
+        {
+          Id: video.Id,
+          frontend: frontend,
+          buster: new Date()
+        });
+    }
+
     Frontend.executeSkipCommercialBack = function(callback) {
       Frontend._executeAction('/rest/navigate/commercialSkipBack', callback);
     }

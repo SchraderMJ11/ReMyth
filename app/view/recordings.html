@@ -1,7 +1,7 @@
 <div class="row" ng:show="initialized == true && recordings != undefined" style="margin-bottom: 8px;">
   <div class="four columns" >
     <button class="small-button" style="width: 100%; text-align: center;"ng:click="switchSortOrder()" ng:show="sortOrder != undefined">Down</button>
-    <button class="small-button" class="four columns" style="text-align: center;" ng:click="switchSortOrder()" ng:show="sortOrder == undefined">Up</button>
+    <button class="small-button four columns" style="text-align: center;" ng:click="switchSortOrder()" ng:show="sortOrder == undefined">Up</button>
   </div>
 
   <div class="eight columns" >
@@ -37,11 +37,11 @@
 
 <div class="row" ng:show="initialized && recordings != undefined">
   <div class="twelve columns">
-    <div class="row recording" ng:repeat="recording in recordings | filter: filterLiveTV | filter: searchText | orderBy:'StartTime':sortOrder" ng:click="clickRecording(recording)">
-      <div class="four columns recording-img">
+    <div class="row media-row" ng:repeat="recording in recordings | filter: filterLiveTV | filter: searchText | orderBy:'StartTime':sortOrder" ng:click="clickRecording(recording)">
+      <div class="four columns media-img">
         <img ng:src="/rest/dvr/image?ChanId={{ recording.Channel.ChanId }}&StartTime={{ recording.Recording.StartTs }}">
       </div>
-      <div class="eight columns recording-propo">
+      <div class="eight columns media-propo">
         <div>
           <h4>{{ recording.Title }} 
             <small ng:show="recording.SubTitle != undefined && recording.SubTitle.length > 0">- {{ recording.SubTitle }}</small>

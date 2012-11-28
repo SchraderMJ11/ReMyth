@@ -10,7 +10,7 @@
   </div>
 
   <div class="row display">
-    <div class="three mobile-four columns">
+    <div ng:class="getButtonColumnStyle()" ng:show="mode == 'recording'">
       <div style="width: 100%; margin-top: 8px;">
         <button class="small-button" style="width: 100%" ng:click="executeSkipCommercialBack(); $event.stopPropagation();">Back</button>
       </div>
@@ -20,7 +20,7 @@
       </div>
     </div>
 
-    <div class="three mobile-four columns">
+    <div ng:class="getButtonColumnStyle()">
       <div style="width: 100%; margin-top: 8px;">
         <button class="small-button" style="width: 100%" ng:click="rewind(); $event.stopPropagation();">
           Rewind <add ng:show="playSpeed < 0">Faster</add>
@@ -34,7 +34,7 @@
       </div>
     </div>
 
-    <div class="three mobile-four columns">
+    <div ng:class="getButtonColumnStyle()">
       <div style="width: 100%; margin-top: 8px;">
         <button class="small-button" style="width: 100%" ng:click="executeStop(); $event.stopPropagation();">Stop</button>
       </div>
@@ -48,7 +48,7 @@
       </div>
     </div>
 
-    <div class="three mobile-four columns">
+    <div ng:class="getButtonColumnStyle()">
       <div style="width: 100%; margin-top: 8px;">
         <button class="small-button" style="width: 100%" ng:click="volumeUp(); $event.stopPropagation();">Volume Up</button>
       </div>

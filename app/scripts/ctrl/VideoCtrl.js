@@ -7,6 +7,13 @@ function VideoCtrl($scope, $timeout, $location, $rootScope, Frontend, Video) {
   $scope.initialized = false;
 
   $scope.videos = Video.list();
+
+  $scope.clickVideo = function(video) {
+    $scope.playingVideo = true;
+    Frontend.playVideo(video, Frontend.getSelected());
+
+    $location.path('/remote');
+  }
   
   $scope.monitorStatus = function() {
     var status = Frontend.getStatus(Frontend.getSelected(), function() {
