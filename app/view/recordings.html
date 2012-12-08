@@ -1,7 +1,9 @@
 <div class="row" ng:show="initialized == true && recordings != undefined" style="margin-bottom: 8px;">
   <div class="four columns" >
-    <button class="small-button" style="width: 100%; text-align: center;"ng:click="switchSortOrder()" ng:show="sortOrder != undefined">Down</button>
-    <button class="small-button four columns" style="text-align: center;" ng:click="switchSortOrder()" ng:show="sortOrder == undefined">Up</button>
+    <button class="small-button" style="width: 100%; text-align: center;" ng:click="switchSortOrder()">
+      <i class="icon-sort-down" ng:show="sortOrder != undefined"></i> 
+      <i class="icon-sort-up" ng:show="sortOrder == undefined"></i> Sort
+    </button>
   </div>
 
   <div class="eight columns" >
@@ -17,7 +19,7 @@
       </div>
       <div class="eight columns">
         <h4>Previously played...</h4>
-        <a href="" ng:click="clickDeletePreviousRecording()">Delete</a>
+        <a href="" ng:click="clickDeletePreviousRecording()"><i class="icon-trash"></i> Delete</a>
         <a href="" ng:click="ignorePreviousRecording()">Ignore</a>
         
         <div ng:show="previousRecordingConfirmNeeded">
@@ -50,7 +52,9 @@
           <p>{{ recording.Description }}</p>
         </div>
         <div>
-          <button class="small-button" ng:click="clickDeleteRecording(recording); $event.stopPropagation();">Delete</a>
+          <button class="small-button" ng:click="clickDeleteRecording(recording); $event.stopPropagation();">
+            <i class="icon-trash"></i> Delete
+          </a>
         </div>
         <div ng:show="selectedRecording.ProgramId == recording.ProgramId">
           <div class="question">Are you sure you want delete?</div>

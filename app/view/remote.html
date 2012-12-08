@@ -4,57 +4,73 @@
   </div>
 
   <div class="row display">
-    <div style="background-color: #C0C0C0; height: 32px; width: 100%;">
-      <div ng:style="getProgressBar()"></div>
+    <div class="radius progress">
+      <div ng:style="getProgressBar()" class="meter"></div>
     </div>
   </div>
 
   <div class="row display">
     <div ng:class="getButtonColumnStyle()" ng:show="mode == 'recording'">
       <div style="width: 100%; margin-top: 8px;">
-        <button class="small-button" style="width: 100%" ng:click="executeSkipCommercialBack(); $event.stopPropagation();">Back</button>
+        <button class="small-button" style="width: 100%" ng:click="executeSkipCommercialBack(); $event.stopPropagation();">
+          <i class="icon-backward"></i> Back
+        </button>
       </div>
 
       <div style="width: 100%; margin-top: 8px;">
-        <button class="small-button" style="width: 100%" ng:click="executeSkipCommercial(); $event.stopPropagation();">Next</button>
+        <button class="small-button" style="width: 100%" ng:click="executeSkipCommercial(); $event.stopPropagation();">
+          <i class="icon-forward"></i> Next
+        </button>
       </div>
     </div>
 
     <div ng:class="getButtonColumnStyle()">
       <div style="width: 100%; margin-top: 8px;">
         <button class="small-button" style="width: 100%" ng:click="rewind(); $event.stopPropagation();">
-          Rewind <add ng:show="playSpeed < 0">Faster</add>
+          <i class="icon-step-backward" ng:show="playSpeed >= 1"></i>
+          <i class="icon-fast-backward" ng:show="playSpeed < 1"></i> Rewind
         </button>
       </div>
 
       <div style="width: 100%; margin-top: 8px;">
         <button class="small-button" style="width: 100%" ng:click="fastForward(); $event.stopPropagation();">
-          Fast Forward <add ng:show="playSpeed > 1">Faster</add>
+          <i class="icon-step-forward" ng:show="playSpeed <= 1"></i>
+          <i class="icon-fast-forward" ng:show="playSpeed > 1"></i> Fast Forward
         </button>
       </div>
     </div>
 
     <div ng:class="getButtonColumnStyle()">
       <div style="width: 100%; margin-top: 8px;">
-        <button class="small-button" style="width: 100%" ng:click="executeStop(); $event.stopPropagation();">Stop</button>
+        <button class="small-button" style="width: 100%" ng:click="executeStop(); $event.stopPropagation();">
+          <i class="icon-stop"></i> Stop
+        </button>
       </div>
 
       <div style="width: 100%; margin-top: 8px;" ng:show="playSpeed == '1'">
-        <button class="small-button" style="width: 100%" ng:click="executePause(); $event.stopPropagation();">Pause</button>
+        <button class="small-button" style="width: 100%" ng:click="executePause(); $event.stopPropagation();">
+          <i class="icon-pause"></i> Pause
+        </button>
       </div>
 
       <div style="width: 100%; margin-top: 8px;" ng:hide="playSpeed == '1'">
-        <button class="small-button" style="width: 100%" ng:click="executePlay(); $event.stopPropagation();">Play</button>
+        <button class="small-button" style="width: 100%" ng:click="executePlay(); $event.stopPropagation();">
+          <i class="icon-play"></i>Play
+        </button>
       </div>
     </div>
 
     <div ng:class="getButtonColumnStyle()">
       <div style="width: 100%; margin-top: 8px;">
-        <button class="small-button" style="width: 100%" ng:click="volumeUp(); $event.stopPropagation();">Volume Up</button>
+        <button class="small-button" style="width: 100%" ng:click="volumeUp(); $event.stopPropagation();">
+          <i class="icon-volume-up"></i> Volume Up
+        </button>
       </div>
 
       <div style="width: 100%; margin-top: 8px;">
-        <button class="small-button" style="width: 100%" ng:click="volumeDown(); $event.stopPropagation();">Volume Down</button>
+        <button class="small-button" style="width: 100%" ng:click="volumeDown(); $event.stopPropagation();">
+          <i class="icon-volume-down"></i> Volume Down
+        </button>
       </div>
     </div>
   </div>

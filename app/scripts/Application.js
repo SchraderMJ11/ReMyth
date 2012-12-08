@@ -1,4 +1,4 @@
-angular.module('ReMyth', ['ngResource', 'UserModule', 'FrontendModule', 'RecordingModule', 'VideoModule']).config(
+applicationModule = angular.module('ReMyth', ['ngResource', 'UserModule', 'FrontendModule', 'RecordingModule', 'VideoModule']).config(
   function($routeProvider) {
     $routeProvider
       .when('/', {controller: LoginCtrl, templateUrl: 'app/view/login.html'})
@@ -7,4 +7,4 @@ angular.module('ReMyth', ['ngResource', 'UserModule', 'FrontendModule', 'Recordi
       .when('/clicker', {controller: ClickerCtrl, templateUrl: '/app/view/clicker.html'})
       .when('/videos', {controller: VideoCtrl, templateUrl: '/app/view/videos.html'});
   }
-);
+).controller("ReMythController", ApplicationCtrl);

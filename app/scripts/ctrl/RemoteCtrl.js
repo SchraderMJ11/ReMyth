@@ -11,8 +11,6 @@ function RemoteCtrl($scope, $timeout, $location, $rootScope, Frontend, User, Rec
 
   $scope.getProgressBar = function() {
     return {
-      "background-color": "red",
-      "height": "32px",
       "width": "" + $scope.progress + "%"
     };
   }

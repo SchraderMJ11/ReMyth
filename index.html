@@ -7,21 +7,24 @@
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.2/angular-resource.min.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.2/angular-cookies.min.js"></script>
 
-    <script src="app/scripts/Application.js"></script>
-
     <script src="app/scripts/module/User.js"></script>
     <script src="app/scripts/module/Frontend.js"></script>
     <script src="app/scripts/module/Recording.js"></script>
     <script src="app/scripts/module/Video.js"></script>
 
+    <script src="app/scripts/ctrl/ApplicationCtrl.js"></script>
     <script src="app/scripts/ctrl/LoginCtrl.js"></script>
     <script src="app/scripts/ctrl/DVRCtrl.js"></script>
     <script src="app/scripts/ctrl/RemoteCtrl.js"></script>
     <script src="app/scripts/ctrl/ClickerCtrl.js"></script>
     <script src="app/scripts/ctrl/VideoCtrl.js"></script>
 
+    <script src="app/scripts/Application.js"></script>
+
     <script src="app/lib/foundation-3.1.1/javascripts/jquery.js"></script>
     <script src="app/lib/foundation-3.1.1/javascripts/jquery.foundation.topbar.js"></script>
+
+    <link rel="stylesheet" href="/app/lib/font-awesome-2.0/css/font-awesome.css">
 
     <script type="text/javascript">
       $(document).ready(function() {
@@ -161,7 +164,7 @@
         margin-top: 15px;
         height: 30px;
         color: #2795B6;
-        font-size: 14px;
+        font-size: 18px;
         outline:none;
         transition: all 0.25s ease-in-out;
         -webkit-transition: all 0.25s ease-in-out;
@@ -175,6 +178,10 @@
         -webkit-box-shadow: 0 0 5px #2795B6;
         -moz-box-shadow: 0 0 5px #2795B6;
         border: 1px solid rgba(0,0,255, 0.8);
+      }
+
+      button.small-button i {
+        font-size: 18px;
       }
 
       input {
@@ -191,21 +198,25 @@
       .top-bar {
         margin-bottom: 0px;
       }
+
+      div.progress .meter {
+        background-color: #2795B6;
+      }
     </style>
 
   </head>
   <body>
 
-    <nav class="top-bar">
+    <nav class="top-bar" ng-controller="ReMythController">
       <ul>
         <li class="name"><h1><a href="#">ReMyth</a></h1></li>
         <li class="toggle-topbar"><a href="#"></a></li>
       </ul>
       <section>
         <ul class="left">
-          <li><a href="#/recordings">Recordings</a></li>
-          <li><a href="#/clicker">Clicker</a></li>
-          <li><a href="#/videos">Videos</a></li>
+          <li ng:class="getRecordingsActiveClass()"><a href="#/recordings">Recordings</a></li>
+          <li ng:class="getVideosActiveClass()"><a href="#/videos">Videos</a></li>
+          <li ng:class="getClickerActiveClass()"><a href="#/clicker">Clicker</a></li>
         </ul>
 
         <!--ul class="right">
