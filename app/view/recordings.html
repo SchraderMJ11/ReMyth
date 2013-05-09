@@ -23,7 +23,7 @@
         <a href="" ng:click="ignorePreviousRecording()">Ignore</a>
         
         <div ng:show="previousRecordingConfirmNeeded">
-          Are you sure you want delete?<br />
+          Are you sure you want to delete?<br />
           <a href="" ng:click="deleteRecording(previousRecording)">Yes</a>
           <a href="" ng:click="cancelDeletePreviousRecording()">No</a>
         </div>
@@ -57,7 +57,7 @@
           </a>
         </div>
         <div ng:show="selectedRecording.ProgramId == recording.ProgramId">
-          <div class="question">Are you sure you want delete?</div>
+          <div class="question">Are you sure you want to delete?</div>
           <div>
             <button class="small-button" ng:click="deleteRecording(recording); $event.stopPropagation();">Yes</button>
             <button class="small-button" ng:click="cancelDeleteRecording(); $event.stopPropagation();">No</button>
